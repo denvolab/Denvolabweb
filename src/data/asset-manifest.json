@@ -1,0 +1,182 @@
+[
+  {
+    "key": "gift-wrap-human",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "kids-coral-check",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "kids-peach-floral",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "kids-sage-check",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "men-coral-check",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "men-monochrome-leaf",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "men-navy-botanical",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "men-sage-stripe",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "men-soft-argyle",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "sleep-mask-human",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-bridal-morning",
+    "original": [3840, 2161],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-drawing-studio",
+    "original": [3840, 2161],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-fabric-care",
+    "original": [3840, 2161],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-family-hero",
+    "original": [3840, 2159],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-founder",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-gift-card",
+    "original": [3840, 2161],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-home-hero",
+    "original": [3840, 2161],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-making-studio",
+    "original": [3840, 2161],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "summer-studio-team",
+    "original": [3840, 2161],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "tween-navy-stars",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "tween-soft-argyle",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-blue-floral-robe",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-charcoal-satin",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-coral-check",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-coral-short-set",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-ivory-nightdress",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-lounge-blush",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-navy-botanical",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-peach-stripe",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-pear-floral",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-rose-pointelle",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-sage-gingham",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-sage-robe",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-teal-lounge",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-wildflower-front",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  },
+  {
+    "key": "women-wildflower-side",
+    "original": [2560, 3840],
+    "variants": [640, 1280, 1920]
+  }
+]
