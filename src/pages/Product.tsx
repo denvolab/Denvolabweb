@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Empty, Modal, Photo, ProductGrid } from "../components/UI";
+import { FigmaArrow, Empty, Modal, Photo, ProductGrid } from "../components/UI";
 import { useStore } from "../state/Store";
 import { money } from "../domain/cart";
 export default function Product() {
@@ -43,7 +43,9 @@ export default function Product() {
               priority
               sizes="(max-width: 700px) 100vw, 55vw"
             />
-            <span>View full image ↗</span>
+            <span>
+              View full image <FigmaArrow />
+            </span>
           </button>
           {p.gallery.length > 1 && (
             <div className="thumbnails">
@@ -180,7 +182,9 @@ export default function Product() {
       <section className="related">
         <div className="section-heading">
           <h2>A few more favourites</h2>
-          <Link to={"/collections/" + p.category}>Explore more →</Link>
+          <Link to={"/collections/" + p.category}>
+            Explore more <FigmaArrow />
+          </Link>
         </div>
         <ProductGrid
           products={store.products
@@ -220,7 +224,9 @@ export default function Product() {
               ))}
             </tbody>
           </table>
-          <Link to="/pages/size-guides">Full size guide →</Link>
+          <Link to="/pages/size-guides">
+            Full size guide <FigmaArrow />
+          </Link>
         </Modal>
       )}
       {zoom && (

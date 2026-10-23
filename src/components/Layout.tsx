@@ -6,7 +6,8 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { Icon, Modal, Photo } from "./UI";
+import { FigmaArrow, Icon, Modal, Photo } from "./UI";
+import { useCarousel } from "../hooks/useCarousel";
 import { useStore } from "../state/Store";
 import { emailSchema } from "../domain/types";
 import { isDemo, message, storeApi } from "../services/store-api";
@@ -22,8 +23,8 @@ const navigation = [
 ];
 export function Layout() {
   const store = useStore();
-  const [announcement, setAnnouncement] = useState(0),
-    [menu, setMenu] = useState(false),
+  const announcement = useCarousel(3, 5000);
+  const [menu, setMenu] = useState(false),
     [search, setSearch] = useState(false),
     [q, setQ] = useState("");
   const navigate = useNavigate(),
@@ -49,19 +50,31 @@ export function Layout() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <div className="announcement" aria-label="Store announcements">
+      <div
+        className="announcement"
+        aria-label="Store announcements"
+        aria-roledescription="carousel"
+        {...announcement.regionProps}
+      >
         <button
           aria-label="Previous announcement"
-          onClick={() => setAnnouncement((announcement + 2) % 3)}
+          onClick={announcement.previous}
         >
-          ‹
+          <FigmaArrow variant="announcement" direction="left" />
         </button>
-        <p aria-live="polite">{announcements[announcement]}</p>
+        <p aria-live="off">
+          <span className="announcement-copy" key={announcement.index}>
+            {announcements[announcement.index]}
+          </span>
+        </p>
+        <button aria-label="Next announcement" onClick={announcement.next}>
+          <FigmaArrow variant="announcement" />
+        </button>
         <button
-          aria-label="Next announcement"
-          onClick={() => setAnnouncement((announcement + 1) % 3)}
+          className="carousel-playback"
+          onClick={announcement.togglePlayback}
         >
-          ›
+          {announcement.stopped ? "Play announcements" : "Pause announcements"}
         </button>
       </div>
       <header className="site-header">
@@ -123,7 +136,7 @@ export function Layout() {
             {navigation.map(([label, slug]) => (
               <Link key={slug} to={`/collections/${slug}`}>
                 {label}
-                <span>→</span>
+                <FigmaArrow />
               </Link>
             ))}
             <Link to="/wishlist">Your wishlist</Link>
@@ -318,7 +331,9 @@ function Footer() {
           >
             Privacy preferences
           </button>
-          <a href="#main">Back to top ↑</a>
+          <a href="#main">
+            Back to top <FigmaArrow direction="up" />
+          </a>
         </div>
       </footer>
     </>
@@ -412,7 +427,7 @@ function NavigationItem({ label, slug }: { label: string; slug: string }) {
             aria-controls={"menu-" + slug}
             onClick={() => setOpen(!open)}
           >
-            ⌄
+            <FigmaArrow variant="nav" />
           </button>
           {open && (
             <div className="mega-menu" id={"menu-" + slug}>
@@ -420,7 +435,7 @@ function NavigationItem({ label, slug }: { label: string; slug: string }) {
                 <p className="eyebrow">Make yourself at home</p>
                 <h2>{label}</h2>
                 <Link className="underlined" to={"/collections/" + slug}>
-                  Explore the collection →
+                  Explore the collection <FigmaArrow />
                 </Link>
               </div>
               <div className="mega-links">

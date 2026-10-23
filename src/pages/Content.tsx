@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Empty, Photo } from "../components/UI";
+import { FigmaArrow, Empty, Photo } from "../components/UI";
 import { articles } from "../data/catalog";
 import { contactSchema, emailSchema } from "../domain/types";
 import { isDemo, message, storeApi } from "../services/store-api";
@@ -11,7 +11,7 @@ export function Journal() {
   return article ? (
     <article className="section article">
       <Link className="underlined" to="/journal">
-        ← Behind the seams
+        <FigmaArrow direction="left" /> Behind the seams
       </Link>
       <p className="eyebrow">The Sunday Nest Journal</p>
       <h1>{article.title}</h1>
@@ -39,7 +39,9 @@ export function Journal() {
             <Photo name={a.image} alt={a.title} />
             <h2>{a.title}</h2>
             <p>{a.intro}</p>
-            <span className="underlined">Read the story →</span>
+            <span className="underlined">
+              Read the story <FigmaArrow />
+            </span>
           </Link>
         ))}
       </div>
@@ -239,7 +241,7 @@ export default function Content() {
         </div>
       )}
       <Link className="underlined" to="/pages/contact-us">
-        We’re here to help →
+        We’re here to help <FigmaArrow />
       </Link>
     </article>
   );

@@ -188,8 +188,8 @@ small {
   color: var(--muted);
 }
 .section {
+  width: 100%;
   padding: 60px var(--page-gutter);
-  max-width: 1700px;
   margin: auto;
 }
 .section-heading {
@@ -244,6 +244,7 @@ small {
   border: 0;
 }
 .announcement {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,7 +253,7 @@ small {
   background: var(--primary);
   color: white;
   padding: 0 max(8px, calc((100vw - 600px) / 2));
-  font-size: 12px;
+  font-size: 13.209px;
 }
 .announcement p {
   width: 520px;
@@ -268,7 +269,10 @@ small {
   color: white;
   font-size: 24px;
   line-height: 1;
-  opacity: 0.7;
+  opacity: 0.5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .site-header {
   position: relative;
@@ -278,7 +282,6 @@ small {
 }
 .header-inner {
   height: 100%;
-  max-width: 1700px;
   margin: auto;
   padding: 0 var(--page-gutter);
   display: flex;
@@ -469,6 +472,7 @@ small {
   padding-bottom: 40px;
 }
 .product-tabs {
+  scrollbar-width: none;
   display: flex;
   gap: 24px;
   overflow: auto;
@@ -496,8 +500,7 @@ small {
   overflow-x: auto;
   scroll-snap-type: x proximity;
   padding-bottom: 16px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-width: none;
 }
 .product-track > .product-card {
   flex: 0 0 calc((100% - 50px) / 3);
@@ -524,7 +527,7 @@ small {
   display: block;
   height: 100%;
 }
-.product-photo img {
+.product-photo > a > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -544,16 +547,23 @@ small {
   border-radius: 4px;
 }
 .save-button {
+  padding: 0;
   position: absolute;
   bottom: 10px;
   right: 10px;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--blush);
+  background: transparent;
   border-radius: 50%;
+}
+.save-button .product-heart {
+  width: 25px;
+  height: 25px;
+  flex: none;
+  object-fit: contain;
 }
 .save-button.saved {
   background: var(--rose);
@@ -720,7 +730,6 @@ small {
 }
 .community {
   text-align: center;
-  max-width: 1000px;
 }
 .community h2 {
   font-size: 50px;
@@ -762,7 +771,6 @@ small {
   display: grid;
   grid-template-columns: 1fr 1fr 1.8fr;
   gap: 60px;
-  max-width: 1345px;
   margin: auto;
 }
 .footer-grid h2 {
@@ -806,7 +814,6 @@ small {
   text-decoration: underline;
 }
 .footer-bottom {
-  max-width: 1345px;
   margin: 40px auto 0;
   font-size: 11px;
   color: var(--muted);
@@ -1251,7 +1258,6 @@ details a {
   margin-top: 16px;
 }
 .information-page {
-  max-width: 1000px;
 }
 .information-page > h1 {
   margin-top: 20px;
@@ -1309,7 +1315,6 @@ details a {
   font-size: 13px;
 }
 .article {
-  max-width: 950px;
 }
 .article .eyebrow {
   margin-top: 50px;
@@ -1324,7 +1329,6 @@ details a {
   line-height: 1.9;
 }
 .account-page {
-  max-width: 600px;
   text-align: center;
   padding-block: 90px;
 }
@@ -1344,7 +1348,6 @@ details a {
   width: 100%;
 }
 .contact-page {
-  max-width: 900px;
 }
 .contact-page form {
   max-width: 750px;
@@ -1517,7 +1520,6 @@ caption {
   }
   .editorial-pair,
   .split-story {
-    max-width: 1700px;
     margin: auto;
   }
   .header-inner {
@@ -1672,6 +1674,7 @@ caption {
     font-size: 13px;
   }
   .section {
+    width: 100%;
     padding: 40px 18px;
   }
   .section-heading {
@@ -1739,6 +1742,7 @@ caption {
     bottom: 24px;
   }
   .product-tabs {
+    scrollbar-width: none;
     gap: 20px;
     width: 100%;
   }
@@ -1783,9 +1787,6 @@ caption {
     bottom: 8px;
     width: 32px;
     height: 32px;
-  }
-  .save-button .icon {
-    transform: scale(0.85);
   }
   .badge {
     top: 8px;
@@ -2161,7 +2162,7 @@ caption {
   background: var(--blush);
   border-top: 1px solid var(--rose);
   border-bottom: 1px solid var(--rose);
-  padding: 36px max(3.3vw, calc((100vw - 1345px) / 2));
+  padding: 36px var(--page-gutter);
   display: grid;
   grid-template-columns: 1fr 1.1fr 180px;
   gap: 60px;
@@ -2188,4 +2189,173 @@ caption {
 }
 .mega-menu a:hover {
   text-decoration: underline;
+}
+
+/* Exact local Figma assets; masks let the same vectors inherit each surface's text colour. */
+.figma-arrow {
+  display: inline-block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+  background: currentColor;
+  mask: url("/images/figma-arrow-right.svg") center / contain no-repeat;
+}
+.figma-arrow-left {
+  transform: rotate(180deg);
+}
+.figma-arrow-up {
+  transform: rotate(-90deg);
+}
+.figma-arrow-announcement {
+  width: 12px;
+  height: 12px;
+  mask-image: url("/images/figma-chevron-right.svg");
+}
+.figma-arrow-announcement.figma-arrow-left {
+  mask-image: url("/images/figma-chevron-left.svg");
+  transform: none;
+}
+.figma-arrow-hero {
+  width: 14px;
+  height: 14px;
+  mask-image: url("/images/figma-hero-chevron.svg");
+  transform: rotate(-90deg);
+}
+.figma-arrow-hero.figma-arrow-left {
+  transform: rotate(90deg);
+}
+.figma-arrow-nav {
+  width: 10px;
+  height: 10px;
+  mask-image: url("/images/figma-nav-chevron.svg");
+  transition: transform 220ms ease;
+}
+.nav-expand[aria-expanded="true"] .figma-arrow-nav {
+  transform: rotate(180deg);
+}
+.nav-expand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.track-controls .figma-arrow {
+  width: 34px;
+  height: 34px;
+  mask-size: 33.6393px 19.3268px;
+}
+.track-controls button,
+.hero-controls > button:not(.slide-dot) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.product-track::-webkit-scrollbar,
+.product-tabs::-webkit-scrollbar {
+  display: none;
+}
+.product-track {
+  scroll-behavior: smooth;
+}
+.product-meta > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.carousel-playback {
+  position: absolute;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden;
+  clip-path: inset(50%);
+  padding: 0;
+  white-space: nowrap;
+}
+.carousel-playback:focus-visible {
+  clip-path: none;
+  width: auto !important;
+  height: auto !important;
+  left: 8px;
+  top: 2px;
+  z-index: 2;
+  background: var(--primary);
+  color: white;
+  padding: 4px 10px;
+  opacity: 1;
+}
+.announcement-copy {
+  display: block;
+  animation: announcement-in 350ms ease both;
+}
+.hero > picture {
+  animation: hero-fade 650ms ease both;
+}
+.hero-content {
+  animation: copy-in 550ms ease both;
+}
+@keyframes announcement-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.button,
+.save-button {
+  transition:
+    background 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+@media (hover: hover) {
+  .button:hover {
+    transform: translateY(-2px);
+  }
+  .save-button:hover {
+    transform: scale(1.08);
+  }
+  .category-grid img,
+  .image-editorial > img {
+    transition: transform 600ms ease;
+  }
+  .category-grid > a {
+    overflow: hidden;
+  }
+  .category-grid > a:hover img,
+  .image-editorial:hover > img {
+    transform: scale(1.025);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .home > .section,
+    .home > .editorial-pair,
+    .home > .split-story {
+      animation: copy-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 15%;
+    }
+  }
 }

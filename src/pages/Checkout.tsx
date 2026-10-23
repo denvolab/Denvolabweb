@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Empty } from "../components/UI";
+import { FigmaArrow, Empty } from "../components/UI";
 import { addressSchema } from "../domain/types";
 import { useStore } from "../state/Store";
 import { isDemo, message, storeApi } from "../services/store-api";
@@ -20,7 +20,7 @@ export default function Checkout() {
     <div className="section checkout-page">
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <Link to="/cart">Your bag</Link>
-        <span>→</span>
+        <FigmaArrow />
         <span>Checkout</span>
       </nav>
       <header className="page-intro">

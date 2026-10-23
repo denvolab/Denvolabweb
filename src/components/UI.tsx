@@ -65,6 +65,20 @@ export function Icon({
     </span>
   );
 }
+export function FigmaArrow({
+  direction = "right",
+  variant = "arrow",
+}: {
+  direction?: "left" | "right" | "up";
+  variant?: "arrow" | "announcement" | "hero" | "nav";
+}) {
+  return (
+    <span
+      className={`figma-arrow figma-arrow-${variant} figma-arrow-${direction}`}
+      aria-hidden="true"
+    />
+  );
+}
 export function ProductCard({
   product: p,
   priority = false,
@@ -90,7 +104,13 @@ export function ProductCard({
           aria-pressed={store.wishlist.includes(p.id)}
           onClick={() => store.toggleWishlist(p.id)}
         >
-          <Icon name="heart" />
+          <img
+            className="product-heart"
+            src="/images/figma-product-heart.svg"
+            alt=""
+            width="25"
+            height="25"
+          />
         </button>
       </div>
       <Link className="product-name" to={`/products/${p.id}`}>
@@ -102,7 +122,7 @@ export function ProductCard({
           to={`/products/${p.id}`}
           aria-label={`Choose options for ${p.name}`}
         >
-          Choose options <span aria-hidden="true">↗</span>
+          Choose options <FigmaArrow />
         </Link>
       </div>
     </article>

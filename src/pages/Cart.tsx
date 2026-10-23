@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Empty, Photo } from "../components/UI";
+import { FigmaArrow, Empty, Photo } from "../components/UI";
 import { useStore } from "../state/Store";
 import { money } from "../domain/cart";
 import { isDemo } from "../services/store-api";
@@ -100,7 +100,7 @@ export default function Cart() {
             );
           })}
           <Link className="underlined" to="/collections/new-in">
-            ← Continue shopping
+            <FigmaArrow direction="left" /> Continue shopping
           </Link>
         </div>
         <aside className="checkout-summary">
@@ -144,7 +144,7 @@ export default function Cart() {
             </form>
           )}
           <Link className="button checkout-link" to="/checkout">
-            Continue to checkout →
+            Continue to checkout <FigmaArrow />
           </Link>
           <small>
             Delivery, discounts and availability are confirmed at checkout.{" "}

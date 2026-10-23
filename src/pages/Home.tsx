@@ -2,11 +2,13 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { collections } from "../data/catalog";
 import { useStore } from "../state/Store";
-import { Photo, ProductCard } from "../components/UI";
+import { FigmaArrow, Photo, ProductCard } from "../components/UI";
+import { useCarousel } from "../hooks/useCarousel";
 export default function Home() {
   const { products } = useStore();
-  const [tab, setTab] = useState("New In"),
-    [slide, setSlide] = useState(0);
+  const [tab, setTab] = useState("New In");
+  const hero = useCarousel(3, 7000);
+  const slide = hero.index;
   const track = useRef<HTMLDivElement>(null);
   const slides = [
     {
@@ -43,8 +45,9 @@ export default function Home() {
         className="hero"
         aria-roledescription="carousel"
         aria-label="Featured collections"
+        {...hero.regionProps}
       >
-        <picture>
+        <picture key={current.image}>
           {slide === 0 && (
             <source
               media="(max-width: 600px)"
@@ -64,7 +67,7 @@ export default function Home() {
           />
         </picture>
         <div className="hero-scrim" />
-        <div className="hero-content">
+        <div className="hero-content" key={current.title}>
           <h1>{current.title}</h1>
           <p>{current.copy}</p>
           <Link className="button light" to={"/collections/" + current.to}>
@@ -74,9 +77,9 @@ export default function Home() {
         <div className="hero-controls">
           <button
             aria-label="Previous featured collection"
-            onClick={() => setSlide((slide + 2) % 3)}
+            onClick={hero.previous}
           >
-            ‹
+            <FigmaArrow variant="hero" direction="left" />
           </button>
           {slides.map((s, i) => (
             <button
@@ -84,16 +87,18 @@ export default function Home() {
               className={"slide-dot " + (i === slide ? "active" : "")}
               aria-label={`Show ${s.title}`}
               aria-pressed={i === slide}
-              onClick={() => setSlide(i)}
+              onClick={() => hero.goTo(i)}
             />
           ))}
-          <button
-            aria-label="Next featured collection"
-            onClick={() => setSlide((slide + 1) % 3)}
-          >
-            ›
+          <button aria-label="Next featured collection" onClick={hero.next}>
+            <FigmaArrow variant="hero" />
           </button>
         </div>
+        <button className="carousel-playback" onClick={hero.togglePlayback}>
+          {hero.stopped
+            ? "Play featured collections"
+            : "Pause featured collections"}
+        </button>
       </section>
       <section className="section feature-products">
         <div className="section-heading">
@@ -125,7 +130,7 @@ export default function Home() {
                 track.current?.scrollBy({ left: -450, behavior: "smooth" })
               }
             >
-              ←
+              <FigmaArrow direction="left" />
             </button>
             <button
               aria-label="Next products"
@@ -133,7 +138,7 @@ export default function Home() {
                 track.current?.scrollBy({ left: 450, behavior: "smooth" })
               }
             >
-              →
+              <FigmaArrow />
             </button>
           </div>
         </div>
@@ -142,14 +147,19 @@ export default function Home() {
             <ProductCard key={p.id} product={p} />
           ))}
           <Link className="track-end" to="/collections/new-in">
-            <h2>New In</h2>View all →
+            <h2>New In</h2>
+            <span>
+              View all <FigmaArrow />
+            </span>
           </Link>
         </div>
       </section>
       <section className="section categories">
         <div className="section-heading">
           <h2>Shop our collections</h2>
-          <Link to="/collections/womens">View all →</Link>
+          <Link to="/collections/womens">
+            View all <FigmaArrow />
+          </Link>
         </div>
         <div className="category-grid">
           {collections.map((c) => (
@@ -157,7 +167,7 @@ export default function Home() {
               <Photo name={c.image} alt={c.title} />
               <span>
                 {c.title}
-                <span aria-hidden="true">→</span>
+                <FigmaArrow />
               </span>
             </Link>
           ))}
